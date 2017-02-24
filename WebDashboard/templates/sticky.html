@@ -1,0 +1,45 @@
+<html>
+<head>
+  <style>
+
+  .draggable { width: 180px; height: 180px; padding: 0.5em; float: left; margin: 0 10px 10px 0; border:2px solid #ccc;}
+  #draggable,#draggable2,#draggable3 { border:2px solid #ccc;}
+  #containment-wrapper { width: 95%; height:700px; border:2px solid #ccc; padding: 10px; }
+  h3 { clear: left; }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+{% for note in notes %}
+<script>
+var notes = [];
+notes.push('{{note}}');
+</script>
+{% endfor %}
+
+</head>
+    <body><a href="/">Back to main page</a>
+        <title> Sticky notes named: {{name}} </title>
+        <h1>Sticky notes named: {{name}}</h1>
+        
+        <div id="containment-wrapper">
+
+            <button type="button" onclick="loadDoc()">Change Content</button>
+
+
+        </div>
+
+            <script>
+        for (i=0; i<notes.length;i++) {
+            $('#containment-wrapper').append($('<div/>', {
+                id: 'draggable' + i,
+                class: 'draggable ui-widget-content',
+                html: notes[i]
+            }));
+        
+            $('#draggable' + i).draggable({ containment: "#containment-wrapper", scroll: false , snap: true});
+        }
+            </script>
+
+    </body>
+</html>

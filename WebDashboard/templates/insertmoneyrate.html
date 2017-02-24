@@ -1,0 +1,50 @@
+<html>
+<head>
+    <script>
+        function loadMoney() {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+             document.getElementById("lel").innerHTML = this.responseText;
+            }
+          };
+          xhttp.open("GET", "/money", true);
+          xhttp.send();
+            }
+
+            function create_post() {
+    console.log($('#post-text').val());
+                loadMoney();
+}
+    </script>
+
+    <script>
+        $(document).on('submit','#form',function (e) {
+            e.preventDefault();
+
+            $ajax({
+                type:'POST',
+                url:'/money',
+                data:{
+                    currency:$('#basename').val(),
+                },
+                success:function () {
+                    
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+<title> New Moneyrate </title>
+
+<div id="lel">
+<p>New Moneyrate:</p>
+
+<form id="form" method="post">
+       {% csrf_token %}
+       Base currency: <input type="text" name="basename"><br>
+       <input type="submit" name="insmoneyrate" value="Submit">
+       </form>
+ </div>
+</body></html>

@@ -1,0 +1,17 @@
+<html><body>
+<title> New Clock </title>
+<p>New Clock:</p>
+
+<form action="/insertclock/" method="post" id="clockform">
+       {% csrf_token %}
+    <table>
+        <tr>
+            <th>
+                Do you want to add a clock component?
+            </th>
+        </tr>
+    </table>
+       <input type="submit" name="insclock" value="Yes">
+       </form>
+       <a href="/">Back to main page</a>
+</body></html>

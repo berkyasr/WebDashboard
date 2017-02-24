@@ -1,0 +1,12 @@
+<html><body>
+            <title> Create </title>
+    		<p>Create an instance of:</p>
+            <form action="/create/" method="post">
+            {% csrf_token %}
+
+                <select name="componenttype">
+                    {% for module in modules %}
+                        <option value="{{ module }}">{{ module.title }}</option>
+                    {% endfor %}
+                </select><br><br><input type="submit"></form>
+</body></html>

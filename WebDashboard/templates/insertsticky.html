@@ -1,0 +1,47 @@
+<html>
+
+  <style>
+
+  .draggable { width: 180px; height: 180px; padding: 0.5em; float: left; margin: 0 10px 10px 0; border:2px solid #ccc;}
+  #draggable,#draggable2,#draggable3 { border:2px solid #ccc;}
+  #containment-wrapper { width: 95%; height:700px; border:2px solid #ccc; padding: 10px; }
+  h3 { clear: left; }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+{% for note in notes %}
+<script>
+var notes = [];
+notes.push('{{note}}');
+</script>
+{% endfor %}
+
+<body>
+<title> New Sticky Notes </title>
+<p>New Sticky Notes:</p>
+
+<form action="/insertsticky/" method="post" id="stickyform">
+       {% csrf_token %}
+    <table>
+        <tr>
+            <th>
+                Sticky name:
+            </th>
+            <th>
+                 <input type="text" name="stickyname">
+            </th>
+        </tr>
+        <tr>
+            <th>
+                Your Entries:
+            </th>
+            <th>
+                <textarea rows="4" cols="50" name="notes" form="stickyform">
+                Enter your notes here.(A line for each note) </textarea>
+            </th>
+        </tr>
+    </table>
+       <input type="submit" name="inssticky" value="Submit">
+       </form>
+</body></html>

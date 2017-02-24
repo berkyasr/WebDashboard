@@ -1,0 +1,11 @@
+<html><body>
+            <title> New Weather Gadget </title>
+    		<p>New Weather Gadget: </p>
+<form action="/insertweather/" method="post">
+           {% csrf_token %}
+    Location: <input type="text" name="location"><br><br>
+    <input type="submit" name="insweather" value="Submit">
+    <input type="submit" name="insweather" value="Auto location">
+
+    </form>
+</body></html>

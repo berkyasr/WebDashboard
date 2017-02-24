@@ -1,0 +1,25 @@
+<html><body><a href="/mbloglist">Back to micro blog list page</a> {{ history | safe }}
+    <p></p><p></p><p></p><p></p><form action="" method="post" id="blogform">
+           {% csrf_token %}
+    <table>
+        <tr>
+            <th>
+              Writer Name:
+            </th>
+            <th>
+               <input type="text" name="writer"><br>
+            </th>
+        </tr>
+        <tr>
+            <th>
+               Your Entry:
+            </th>
+            <th>
+                <textarea rows="4" cols="50" name="entry" form="blogform">
+                What would you like to share?</textarea>
+            </th>
+        </tr>
+    </table>
+    <input type="submit" value="Submit">
+    </form>
+    </body></html>

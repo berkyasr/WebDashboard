@@ -1,0 +1,28 @@
+<html><body>
+<title> New Gallery </title>
+<p>New Gallery:</p>
+
+<form action="/insertgallery/" method="post" id="galleryform">
+       {% csrf_token %}
+    <table>
+        <tr>
+            <th>
+                Gallery name:
+            </th>
+            <th>
+                 <input type="text" name="galleryname">
+            </th>
+        </tr>
+        <tr>
+            <th>
+                Your Entry:
+            </th>
+            <th>
+                <textarea rows="4" cols="50" name="photos" form="galleryform">
+                Enter the links for your photos here.(A line for each link) </textarea>
+            </th>
+        </tr>
+    </table>
+       <input type="submit" name="insgallery" value="Submit">
+       </form>
+</body></html>

@@ -1,0 +1,12 @@
+<html><body>
+<title> New Poll </title>
+<p>New Poll:</p>
+
+<form action="/insertpoll/" method="post" id="blogform">
+       {% csrf_token %}
+       Creator Name: <input type="text" name="creator"><br>
+       Poll Name: <input type="text" name="name"><br>
+       <input type="submit" value="Submit">
+       </form>
+       Your Entry: <textarea rows="4" cols="50" name="entry" form="blogform">Enter your options here.(A line for each option)</textarea>
+</body></html>

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dash Board</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <style>
+   .notelist, .mbloglist, .polllist { width: 300px; height: 400px; padding: 0.5em; float: left; margin: 0 10px 10px 0; border:2px solid #cc;}
+   .moneyrate, .clock { width: 300px; height: 200px; padding: 0.5em; float: left; margin: 0 10px 10px 0; border:2px solid #cc;}
+  #containment-wrapper { width: 95%; height:1500px; border:2px solid #ccc; padding: 10px; }
+  h3 { clear: left; }
+  </style>
+    <script>
+        function loadMblog() {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+             document.getElementById("mbloglist").innerHTML = this.responseText;
+            }
+          };
+          xhttp.open("GET", "/mbloglist", true);
+          xhttp.send();
+            }
+        function loadPoll() {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+             document.getElementById("polllist").innerHTML = this.responseText;
+            }
+          };
+          xhttp.open("GET", "/polllist", true);
+          xhttp.send();
+            }
+        function loadNotes() {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+             document.getElementById("notelist").innerHTML = this.responseText;
+            }
+          };
+          xhttp.open("GET", "/notelist", true);
+          xhttp.send();
+            }
+        function loadMoney() {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+             document.getElementById("moneyrate").innerHTML = this.responseText;
+            }
+          };
+          xhttp.open("GET", "/insertmoneyrate", true);
+          xhttp.send();
+            }
+        function loadClock() {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+             document.getElementById("clock").innerHTML = this.responseText;
+                console.log(this.responseText);
+            }
+          };
+          xhttp.open("GET", "/clock", true);
+          xhttp.send();
+            }
+    </script>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#polllist" ).draggable({ containment: "#containment-wrapper", scroll: false });
+    $( "#notelist" ).draggable({ containment: "#containment-wrapper", scroll: false });
+      $( "#mbloglist" ).draggable({ containment: "#containment-wrapper", scroll: false });
+
+    $( "#moneyrate" ).draggable({ containment: "#containment-wrapper", scroll: false });
+    $( "#clock" ).draggable({ containment: "parent" });
+  } );
+  </script>
+</head>
+<body>
+     		<h1>Welcome to Dashboard App {{ user }} </h1>
+<a href="/logout">Logout</a>
+<a href="/save">Save</a>
+
+<div id="containment-wrapper">
+
+  <div id="notelist" class="notelist ui-widget-content">
+        <iframe width="300" height="400" src="/notelist"></iframe>
+  </div>
+
+    <div id="mbloglist" class="mbloglist ui-widget-content">
+        <iframe width="300" height="400" src="/mbloglist"></iframe>
+    </div>
+
+          <div id="polllist" class="polllist ui-widget-content">
+              <iframe width="300" height="400" src="/polllist"></iframe>
+    </div>
+
+
+
+
+
+
+        <div id="moneyrate" class="moneyrate ui-widget-content">
+          <button type="button" onclick="loadMoney()">Create Money Rate Panel</button>
+    </div>
+
+        <div id="clock" class="clock ui-widget-content">
+          <button type="button" onclick="loadClock()">Create a clock component</button>
+    </div>
+            </div>
+
+</div>
+
+
+</body>
+</html>

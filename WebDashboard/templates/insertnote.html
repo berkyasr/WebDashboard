@@ -1,0 +1,28 @@
+<html><body>
+<title> New Note </title>
+<p>New Note:</p>
+
+<form action="/insertnote/" method="post" id="blogform">
+       {% csrf_token %}
+        <table>
+        <tr>
+            <th>
+                Note name:
+            </th>
+            <th>
+                 <input type="text" name="name">
+            </th>
+        </tr>
+        <tr>
+            <th>
+                Your Entry:
+            </th>
+            <th>
+                <textarea rows="4" cols="50" name="entry" form="blogform">
+                Enter your options here.(A line for each option)</textarea>            </th>
+        </tr>
+    </table>
+       <input type="submit" value="Submit">
+       </form>
+
+</body></html>
